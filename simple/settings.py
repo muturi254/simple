@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'boards.apps.BoardsConfig',
+    'accounts.apps.AccountsConfig',
     'bootstrap5',
     'widget_tweaks',
 ]
