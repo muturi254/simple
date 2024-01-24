@@ -50,7 +50,7 @@ class BoardTopicsTests(TestCase):
     
     def test_board_topics_view_contains_navigation_links(self):
         board_topics_url = reverse('board_topics', kwargs={'pk': 1})
-        homepage_url = reverse('/')
+        homepage_url = reverse('home')
         new_topic_url = reverse('new_topic', kwargs={'pk': 1})
 
         response = self.client.get(board_topics_url)
@@ -109,7 +109,7 @@ class NewTopicTests(TestCase):
         response = self.client.post(url, {})
         form = response.context.get('form')
         self.assertEquals(response.status_code, 200)
-        self.assertEquals(form.errors)
+        self.assertTrue(form.errors)
 
 
     def test_new_topic_invalid_post_data_empty_fields(self):
@@ -127,5 +127,5 @@ class NewTopicTests(TestCase):
     def test_contains_form(self):
         url = reverse('new_topic', kwargs={'pk': 1})
         response = self.client.get(url)
-        form = response.contex.get('form')
+        form = response.context.get('form')
         self.assertIsInstance(form, NewTopicForm)
